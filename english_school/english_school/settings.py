@@ -99,7 +99,7 @@ ROOT_URLCONF = "english_school.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -268,6 +268,7 @@ JET_THEMES = [
 ]
 
 JET_SIDE_MENU_COMPACT = True
+
 
 # Logging
 LOGGING = {

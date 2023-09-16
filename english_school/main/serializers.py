@@ -1,6 +1,13 @@
 from rest_framework import serializers
 
-from .models import Category, Course, Comment, MainPage, Contact, Subscrabe_email
+from .models import (
+    Category,
+    Course,
+    Comment,
+    MainPage,
+    Contact,
+    Subscrabe_email
+)
 
 
 class CategorySerializer(serializers.ModelSerializer):
