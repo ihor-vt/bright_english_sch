@@ -223,6 +223,17 @@ files = [
 Django = ">=2.2"
 
 [[package]]
+name = "django-tinymce"
+version = "3.6.1"
+description = "A Django application that contains a widget to render a form field as a TinyMCE editor."
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-tinymce-3.6.1.tar.gz", hash = "sha256:6f4f6227c2c608052081a436a1e3054c441caae24c9e0c8c3010536e24749e29"},
+    {file = "django_tinymce-3.6.1-py3-none-any.whl", hash = "sha256:da5732413f51cf854352e3148f06f170b59d95a6c6a43fd9f7ccfdd1849f4bf9"},
+]
+
+[[package]]
 name = "djangorestframework"
 version = "3.14.0"
 description = "Web APIs for Django, made easy."
@@ -611,4 +622,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "44bb0e30025cdd1f9269b90f48b2e0e09fac54bfdf99c53dad533eb20b8a4122"
+content-hash = "c281335206a4735724ae99dc1f2ece31f0e6ce2b9919e620ebfbd387337476d8"

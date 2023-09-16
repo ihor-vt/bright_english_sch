@@ -339,3 +339,10 @@ class Subscrabe_email(models.Model):
     email = models.EmailField(
         verbose_name=_("Електрона пошта")
         )
+
+    class Meta:
+        verbose_name = _("Підписка на розсилку")
+        verbose_name_plural = _("Підписки на розсилку")
+
+    def __str__(self):
+        return self.email

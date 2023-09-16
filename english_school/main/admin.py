@@ -1,10 +1,53 @@
+import csv
+import datetime
+
+from django.db import models
 from django.contrib import admin
+from django.http import HttpResponse
 from django.utils.html import mark_safe
 from django.utils.crypto import get_random_string
+from django.utils.translation import gettext_lazy as _
 
+from tinymce.widgets import TinyMCE
 from parler.admin import TranslatableAdmin
 
-from .models import Category, Course, Service, Comment, MainPage, Contact
+from .models import (
+    Category,
+    Course,
+    Service,
+    Comment,
+    MainPage,
+    Contact,
+    Subscrabe_email
+    )
+
+
+def export_to_csv(modeladmin, request, queryset):
+    opts = modeladmin.model._meta
+    content_disposition = f"attachment; filename={opts.verbose_name}.csv"
+    response = HttpResponse(content_type="text/csv")
+    response["Content-Disposition"] = content_disposition
+    writer = csv.writer(response)
+    fields = [
+        field
+        for field in opts.get_fields()
+        if not field.many_to_many and not field.one_to_many
+    ]
+    # Write a first row with header information
+    writer.writerow([field.verbose_name for field in fields])
+    # Write data rows
+    for obj in queryset:
+        data_row = []
+        for field in fields:
+            value = getattr(obj, field.name)
+            if isinstance(value, datetime.datetime):
+                value = value.strftime("%d/%m/%Y")
+            data_row.append(value)
+        writer.writerow(data_row)
+    return response
+
+
+export_to_csv.short_description = _("Експорт у CSV")
 
 
 @admin.register(Service)
@@ -31,7 +74,7 @@ class ServiceAdmin(admin.ModelAdmin):
             service.token = token
             service.save()
 
-    generate_new_token.short_description = "Генерація нового токену"
+    generate_new_token.short_description = _("Генерація нового токену")
 
 
 @admin.register(Category)
@@ -177,7 +220,7 @@ class MainPageAdmin(admin.ModelAdmin):
         super().save_model(request, obj, form, change)
 
     media_thumbnail.allow_tags = True
-    media_thumbnail.short_description = "Медіа"
+    media_thumbnail.short_description = _("Медіа")
 
 
 @admin.register(Contact)
@@ -221,7 +264,7 @@ class ContactAdmin(admin.ModelAdmin):
         "updated_by",
         ]
 
-    actions = ["mark_as_processed"]
+    actions = ["mark_as_processed", export_to_csv]
 
     def save_model(self, request, obj, form, change):
         obj.updated_by = request.user
@@ -232,4 +275,17 @@ class ContactAdmin(admin.ModelAdmin):
             contact.done = True
             contact.save()
 
-    mark_as_processed.short_description = "Позначити, як оброблені"
+    mark_as_processed.short_description = _("Позначити, як оброблені")
+
+
+@admin.register(Subscrabe_email)
+class Subscrabe_emailAdmin(admin.ModelAdmin):
+    list_display = [
+        "id",
+        "email"
+    ]
+
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE()}
+    }
+    actions = [export_to_csv]

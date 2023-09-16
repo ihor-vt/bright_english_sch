@@ -27,6 +27,7 @@ urlpatterns = i18n_patterns(
     path("jet/dashboard/", include("jet.dashboard.urls", "jet-dashboard")),
     path("set-language/", set_language, name="set_language"),
     path(_("admin/"), admin.site.urls),
+    path('tinymce/', include('tinymce.urls')),
     path("", include("main.urls")),
 )
 
