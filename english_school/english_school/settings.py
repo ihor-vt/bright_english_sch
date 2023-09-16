@@ -24,7 +24,7 @@ env = environ.Env()
 environ.Env.read_env(BASE_DIR / ".env")
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = env("SECRET_KEY")
@@ -125,28 +125,6 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": env("DATABASE_NAME"),
-#         "USER": env("DATABASE_USER"),
-#         "PASSWORD": env("DATABASE_PASSWORD"),
-#         "HOST": env("DATABASE_HOST"),
-#         "PORT": env("DATABASE_PORT"),
-#     }
-# }
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": os.environ.get("DATABASE_NAME"),
-#         "USER": os.environ.get("DATABASE_USER"),
-#         "PASSWORD": os.environ.get("DATABASE_PASSWORD"),
-#         "HOST": os.environ.get("DATABASE_HOST"),
-#         "PORT": os.environ.get("DATABASE_PORT"),
-#     }
-# }
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -238,12 +216,6 @@ ADMINS = [
 # Cloudinary
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
-# CLOUDINARY_STORAGE = {
-#     "CLOUD_NAME": env("CLOUDINARY_NAME"),
-#     "API_KEY": env("CLOUDINARY_API_KEY"),
-#     "API_SECRET": env("CLOUDINARY_API_SECRET"),
-# }
-
 CLOUDINARY_STORAGE = {
     "CLOUD_NAME": os.environ.get("CLOUDINARY_NAME"),
     "API_KEY": os.environ.get("CLOUDINARY_API_KEY"),
@@ -279,18 +251,18 @@ LOGGING = {
             "class": "logging.StreamHandler",
         },
         "file": {
-            "level": "DEBUG",  # Set the desired log level
+            "level": "DEBUG",
             "class": "logging.FileHandler",
-            "filename": "app.log",  # Specify the log file name
+            "filename": "app.log",
         },
     },
     "root": {
-        "handlers": ["console", "file"],  # Log to both console and file
+        "handlers": ["console", "file"],
         "level": "WARNING",
     },
     "loggers": {
         "django": {
-            "handlers": ["console", "file"],  # Log Django-specific logs to both
+            "handlers": ["console", "file"],
             "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
             "propagate": False,
         },
