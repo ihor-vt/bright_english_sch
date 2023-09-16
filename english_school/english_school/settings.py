@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "main.apps.MainConfig",
+    "writingApp.apps.WritingappConfig",
     "i18n_switcher.apps.I18NSwitcherConfig",
     "cloudinary_storage",
     "cloudinary",

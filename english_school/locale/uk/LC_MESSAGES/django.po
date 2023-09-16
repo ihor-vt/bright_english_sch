@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-16 19:38+0300\n"
+"POT-Creation-Date: 2023-09-16 23:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,11 +21,11 @@ msgstr ""
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
-#: english_school/settings.py:178
+#: english_school/settings.py:157
 msgid "Ukrainian"
 msgstr "Українська"
 
-#: english_school/settings.py:179
+#: english_school/settings.py:158
 msgid "Англійська"
 msgstr "English"
 
@@ -41,19 +41,19 @@ msgstr ""
 msgid "Ласкаво просимо до адмін-панелі сайту"
 msgstr ""
 
-#: main/admin.py:50
+#: main/admin.py:48
 msgid "Експорт у CSV"
 msgstr ""
 
-#: main/admin.py:77
+#: main/admin.py:75
 msgid "Генерація нового токену"
 msgstr ""
 
-#: main/admin.py:223
+#: main/admin.py:221
 msgid "Медіа"
 msgstr ""
 
-#: main/admin.py:278
+#: main/admin.py:276
 msgid "Позначити, як оброблені"
 msgstr ""
 
@@ -283,4 +283,20 @@ msgstr ""
 
 #: templates/admin/base_site.html:38
 msgid "Вийти"
+msgstr ""
+
+#: writingApp/apps.py:8
+msgid "Редактор"
+msgstr ""
+
+#: writingApp/models.py:8
+msgid "Заголовок"
+msgstr ""
+
+#: writingApp/models.py:16
+msgid "Редактор тексту"
+msgstr ""
+
+#: writingApp/models.py:17
+msgid "Редакток текстів"
 msgstr ""

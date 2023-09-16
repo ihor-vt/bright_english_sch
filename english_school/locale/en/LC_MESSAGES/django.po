@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-16 19:38+0300\n"
+"POT-Creation-Date: 2023-09-16 23:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: english_school/settings.py:178
+#: english_school/settings.py:157
 msgid "Ukrainian"
 msgstr "Українська"
 
-#: english_school/settings.py:179
+#: english_school/settings.py:158
 msgid "Англійська"
 msgstr "English"
 
@@ -40,19 +40,19 @@ msgstr "Admin panel"
 msgid "Ласкаво просимо до адмін-панелі сайту"
 msgstr "Welcome to the Bright Language School newsletter!"
 
-#: main/admin.py:50
+#: main/admin.py:48
 msgid "Експорт у CSV"
 msgstr "Export to CSV"
 
-#: main/admin.py:77
+#: main/admin.py:75
 msgid "Генерація нового токену"
 msgstr "Generation of a new token"
 
-#: main/admin.py:223
+#: main/admin.py:221
 msgid "Медіа"
 msgstr "Media"
 
-#: main/admin.py:278
+#: main/admin.py:276
 msgid "Позначити, як оброблені"
 msgstr "Mark as processed"
 
@@ -315,6 +315,22 @@ msgstr "Change password"
 #: templates/admin/base_site.html:38
 msgid "Вийти"
 msgstr "Log out"
+
+#: writingApp/apps.py:8
+msgid "Редактор"
+msgstr "Editor"
+
+#: writingApp/models.py:8
+msgid "Заголовок"
+msgstr "Title"
+
+#: writingApp/models.py:16
+msgid "Редактор тексту"
+msgstr "Text editor"
+
+#: writingApp/models.py:17
+msgid "Редактор текстів"
+msgstr "Text editor"
 
 #~ msgid "Переключити мову"
 #~ msgstr "Language Switcher"

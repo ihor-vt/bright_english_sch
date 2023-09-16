@@ -1,14 +1,12 @@
 import csv
 import datetime
 
-from django.db import models
 from django.contrib import admin
 from django.http import HttpResponse
 from django.utils.html import mark_safe
 from django.utils.crypto import get_random_string
 from django.utils.translation import gettext_lazy as _
 
-from tinymce.widgets import TinyMCE
 from parler.admin import TranslatableAdmin
 
 from .models import (
@@ -285,7 +283,4 @@ class Subscrabe_emailAdmin(admin.ModelAdmin):
         "email"
     ]
 
-    formfield_overrides = {
-        models.TextField: {'widget': TinyMCE()}
-    }
     actions = [export_to_csv]
