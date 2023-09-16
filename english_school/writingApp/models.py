@@ -8,6 +8,10 @@ class TextEditor(models.Model):
         verbose_name=_('Заголовок')
     )
     content = models.TextField()
+    is_selected = models.BooleanField(
+        default=False,
+        verbose_name=_('Обрано для надсилання')
+        )
 
     def __str__(self) -> str:
         return self.title

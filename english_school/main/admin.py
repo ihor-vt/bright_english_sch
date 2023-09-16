@@ -18,6 +18,7 @@ from .models import (
     Contact,
     Subscrabe_email
     )
+from writingApp.models import TextEditor
 
 
 def export_to_csv(modeladmin, request, queryset):
@@ -283,4 +284,16 @@ class Subscrabe_emailAdmin(admin.ModelAdmin):
         "email"
     ]
 
-    actions = [export_to_csv]
+    def send_custom_message(self, request, queryset):
+        selected_messages = TextEditor.objects.filter(is_selected=True)
+        recipient_list = [subscriber.email for subscriber in queryset]
+        send_email(
+            selected_messages.title, selected_messages.content, recipient_list
+            )
+
+        self.message_user(request, _("Повідомлення надіслано успішно."))
+
+    send_custom_message.short_description = _(
+        "Надіслати вибраним електронну пошту")
+
+    actions = [export_to_csv, "send_custom_message"]

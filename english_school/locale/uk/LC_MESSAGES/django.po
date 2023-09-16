@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-16 23:37+0300\n"
+"POT-Creation-Date: 2023-09-17 00:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,20 +41,28 @@ msgstr ""
 msgid "Ласкаво просимо до адмін-панелі сайту"
 msgstr ""
 
-#: main/admin.py:48
+#: main/admin.py:49
 msgid "Експорт у CSV"
 msgstr ""
 
-#: main/admin.py:75
+#: main/admin.py:76
 msgid "Генерація нового токену"
 msgstr ""
 
-#: main/admin.py:221
+#: main/admin.py:222
 msgid "Медіа"
 msgstr ""
 
-#: main/admin.py:276
+#: main/admin.py:277
 msgid "Позначити, як оброблені"
+msgstr ""
+
+#: main/admin.py:294
+msgid "Повідомлення надіслано успішно."
+msgstr ""
+
+#: main/admin.py:297
+msgid "Надіслати вибраним електронну пошту"
 msgstr ""
 
 #: main/apps.py:8
@@ -293,10 +301,14 @@ msgstr ""
 msgid "Заголовок"
 msgstr ""
 
-#: writingApp/models.py:16
+#: writingApp/models.py:13
+msgid "Обрано для надсилання"
+msgstr ""
+
+#: writingApp/models.py:20
 msgid "Редактор тексту"
 msgstr ""
 
-#: writingApp/models.py:17
-msgid "Редакток текстів"
+#: writingApp/models.py:21
+msgid "Редактор текстів"
 msgstr ""
