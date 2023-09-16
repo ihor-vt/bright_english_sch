@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.utils.html import mark_safe
 from django.utils.crypto import get_random_string
 
+from parler.admin import TranslatableAdmin
+
 from .models import Category, Course, Service, Comment, MainPage, Contact
 
 
@@ -33,7 +35,7 @@ class ServiceAdmin(admin.ModelAdmin):
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(TranslatableAdmin):
     list_display = ["name", "created_by", "updated_by"]
     readonly_fields = ["created_by", "updated_by"]
     search_fields = ["name"]
@@ -51,7 +53,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Course)
-class CourseAdmin(admin.ModelAdmin):
+class CourseAdmin(TranslatableAdmin):
     list_display = [
         "name",
         "display_image",

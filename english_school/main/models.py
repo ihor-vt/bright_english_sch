@@ -41,10 +41,6 @@ class Category(TranslatableModel):
     class Meta:
         verbose_name = _("Категорія")
         verbose_name_plural = _("Категорії")
-        ordering = ["name"]
-        indexes = [
-            models.Index(fields=["name"]),
-        ]
 
     def __str__(self) -> str:
         return self.name
@@ -145,7 +141,7 @@ class Course(TranslatableModel):
         verbose_name = _("Курс")
         verbose_name_plural = _("Курси")
         indexes = [
-            models.Index(fields=["id", "name"]),
+            models.Index(fields=["id"]),
             models.Index(fields=["-created"]),
         ]
 

@@ -39,11 +39,9 @@ CSRF_TRUSTED_ORIGINS = [
     "https://bright-language-school.fly.dev",
     ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",
-# ]
+
 CORS_ALLOW_ALL_ORIGINS = True
-# CORS_URLS_REGEX = r"^/api/.*$"
+
 CORS_ALLOW_METHODS = (
     "DELETE",
     "GET",
@@ -52,6 +50,7 @@ CORS_ALLOW_METHODS = (
     "POST",
     "PUT",
 )
+
 CORS_ALLOW_HEADERS = (
     "accept",
     "authorization",
@@ -195,6 +194,7 @@ PARLER_LANGUAGES = {
     ),
     'default': {
         'fallbacks': ['uk'],
+        "hide_untranslated": False,
     },
 }
 
