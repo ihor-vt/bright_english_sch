@@ -5,9 +5,10 @@ from datetime import datetime
 from django.urls import reverse
 from django.conf import settings
 from django.shortcuts import render
-from django.core.mail import send_mail, BadHeaderError
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
+from django.core.mail import send_mail, BadHeaderError
+from django.utils.translation import gettext_lazy as _
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
@@ -25,6 +26,8 @@ from .serializers import CategorySerializer,\
     Subscrabe_emailSerializer
 from .authentication import ServiceOnlyAuthentication,\
     ServiceOnlyAuthorizationSite
+from .mail_messsage_generator import contact_form_message,\
+    sumscribe_welcome_message
 
 
 logger = logging.getLogger(__name__)
@@ -64,7 +67,7 @@ class CourseViewSet(viewsets.ModelViewSet):
         for item in data:
             course_id = item["id"]
             course = Course.objects.get(pk=course_id)
-            category = Course.category
+            category = course.category
             category_serializer = CategorySerializer(
                 category, context={"request": request}
             )
@@ -85,30 +88,6 @@ class CourseViewSet(viewsets.ModelViewSet):
             category, context={"request": request}
         )
         data["category"] = category_serializer.data
-
-        return Response(data)
-
-
-class CourseMainPageViewSet(viewsets.ModelViewSet):
-    queryset = Course.objects.filter(available=True)
-    serializer_class = CourseSerializer
-    authentication_classes = [ServiceOnlyAuthentication]
-    permission_classes = [ServiceOnlyAuthorizationSite]
-    http_method_names = ['get']
-
-    @method_decorator(cache_page(60 * 30))
-    def list(self, request, *args, **kwargs):
-        queryset = self.filter_queryset(self.get_queryset())
-        serializer = self.get_serializer(
-            queryset, many=True, context={"request": request})
-        data = serializer.data
-
-        for item in data:
-            # No need to fetch the category individually,
-            # it's already prefetched
-            category_serializer = CategorySerializer(
-                item["category"], context={"request": request})
-            item["category"] = category_serializer.data
 
         return Response(data)
 
@@ -164,16 +143,14 @@ class ContactViewSet(viewsets.ModelViewSet):
         # Send email
         time_now = datetime.now()
         formatted_datetime = time_now.strftime("%d.%m.%Y - %H:%M")
-        subject = "Форму з сайту заповнив клієнт"
+        subject = _("Форму з сайту заповнив клієнт")
         name = serializer.data.get('name', "-")
         email = serializer.data.get('email', "-")
         mobile_phone = serializer.data.get('mobile_phone', "-")
         description = serializer.data.get('description', "-")
-        message = f"Дата і час: {formatted_datetime},\n"\
-            f"Ім'я: {name}\n"\
-            f"Пошта: {email}\n"\
-            f"Телефон: {mobile_phone}\n"\
-            f"Примітка: {description}"
+        message = contact_form_message(
+            formatted_datetime, name, email, mobile_phone, description
+            )
 
         from_email = settings.DEFAULT_FROM_EMAIL
         recipient_list = [settings.ADMIN_EMAIL]
@@ -202,15 +179,37 @@ class Subscrabe_emailViewSet(viewsets.ModelViewSet):
             email = serializer.validated_data['email']
 
             if Subscrabe_email.objects.filter(email=email).exists():
-                return Response({'detail': 'Ця електронна адреса вже підписана.'}, status=status.HTTP_400_BAD_REQUEST)
+                return Response(
+                    {'detail': 'Ця електронна адреса вже підписана.'},
+                    status=status.HTTP_400_BAD_REQUEST)
 
             Subscrabe_email.objects.create(email=email)
+
+            # Send email
+            subject = _(
+                "Ласкаво просимо до Bright Language School інформаційну підписку!"
+                )
+            message = sumscribe_welcome_message(
+                email,
+                )
+
+            from_email = settings.DEFAULT_FROM_EMAIL
+            recipient_list = [email]
+
+            try:
+                send_mail(subject, message, from_email, recipient_list)
+            except BadHeaderError as e:
+                logger.error(f"Invalid header found: {e}")
+            except Exception as e:
+                logger.error(f">>> Failed to send email: {e}")
+            sumscribe_welcome_message()
 
             return Response(
                 {'detail': 'You successfully subscribe for newsletters.'},
                 status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 def index(request):
     api_url = reverse("api-root")

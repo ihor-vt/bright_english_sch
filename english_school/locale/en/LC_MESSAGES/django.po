@@ -1,0 +1,281 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-15 16:13+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: english_school/dashboard.py:6
+msgid "Переключити мову"
+msgstr "Language Switcher"
+
+#: english_school/settings.py:175
+msgid "Ukrainian"
+msgstr "Українська"
+
+#: english_school/settings.py:176
+msgid "Англійська"
+msgstr "English"
+
+#: english_school/urls.py:29
+msgid "admin/"
+msgstr "admin/"
+
+#: english_school/urls.py:37 english_school/urls.py:38
+msgid "Адмін-панель"
+msgstr "Admin panel"
+
+#: english_school/urls.py:39
+#, fuzzy
+#| msgid "Ласкаво просимо до Bright Language School інформаційну підписку!"
+msgid "Ласкаво просимо до адмін-панелі сайту"
+msgstr "Welcome to the Bright Language School newsletter!"
+
+#: main/mail_messsage_generator.py:6
+#, python-brace-format
+msgid ""
+"\n"
+"    Дата і час: {formatted_datetime},\n"
+"    Ім'я: {name}\n"
+"    Пошта: {email}\n"
+"    Телефон: {mobile_phone}\n"
+"    Примітка: {description}\n"
+"    "
+msgstr ""
+"\n"
+"    Date and Time: {formatted_datetime},\n"
+"    Name: {name}\n"
+"    Email: {email}\n"
+"    Phone: {mobile_phone}\n"
+"    Note: {description}\n"
+"    "
+
+#: main/mail_messsage_generator.py:17
+#, python-brace-format
+msgid ""
+"\n"
+"    Вітаємо {customer_email},\n"
+"\n"
+"    Дякуємо, що приєдналися до інформаційної розсилки Bright Language "
+"School! Ми раді вітати вас в нашій спільноті і ділитися з вами останніми "
+"новинами, оновленнями та особливими пропозиціями.\n"
+"\n"
+"    Що ви можете очікувати від нас:\n"
+"    - Щомісячний лист з цікавими статтями та корисними порадами з вивчення "
+"мов.\n"
+"    - Оголошення про наші акції, знижки та спеціальні пропозиції.\n"
+"    - Важливі повідомлення та оновлення від Bright Language School.\n"
+"\n"
+"    Ми завжди працюємо над тим, щоб надавати вам якісний контент та послуги. "
+"Ваша підтримка дуже важлива для нас.\n"
+"\n"
+"    Якщо у вас є які-небудь питання або пропозиції, будь ласка, не соромтеся "
+"зв'язатися з нами. Ми завжди готові слухати вас!\n"
+"\n"
+"    Дякуємо ще раз за вашу підписку. Ми сподіваємося, що наші матеріали "
+"будуть корисні та надихнуть вас.\n"
+"\n"
+"    З найкращими побажаннями,\n"
+"    Команда Bright Language School\n"
+"    "
+msgstr ""
+"\n"
+"    Welcome {customer_email},\n"
+"\n"
+"    Thank you for joining the Bright Language School newsletter! We're "
+"delighted to welcome you to our community and share the latest news, "
+"updates, and special offers with you.\n"
+"\n"
+"    What you can expect from us:\n"
+"    - Monthly newsletter with interesting articles and helpful language "
+"learning tips.\n"
+"    - Announcements about our promotions, discounts, and special offers.\n"
+"    - Important messages and updates from Bright Language School.\n"
+"\n"
+"    We're constantly working to provide you with quality content and "
+"services. Your support means a lot to us.\n"
+"\n"
+"    If you have any questions or suggestions, please feel free to reach out "
+"to us. We're always here to listen!\n"
+"\n"
+"    Thank you once again for your subscription. We hope our materials will "
+"be helpful and inspiring to you.\n"
+"\n"
+"    Best regards,\n"
+"    The Bright Language School Team\n"
+" "
+
+#: main/models.py:13 main/models.py:58 main/models.py:157
+msgid "Назва"
+msgstr "Title"
+
+#: main/models.py:27 main/models.py:88 main/models.py:134 main/models.py:166
+#: main/models.py:206
+msgid "Створив(ла)"
+msgstr "Created by"
+
+#: main/models.py:35 main/models.py:96 main/models.py:142 main/models.py:174
+#: main/models.py:214 main/models.py:280
+msgid "Обновив(ла)"
+msgstr "Updated by"
+
+#: main/models.py:39 main/models.py:56
+msgid "Категорія"
+msgstr "Category"
+
+#: main/models.py:40
+msgid "Категорії"
+msgstr "Categories"
+
+#: main/models.py:63 main/models.py:190
+msgid "Зображення"
+msgstr "Image"
+
+#: main/models.py:64
+msgid "Період"
+msgstr "Period"
+
+#: main/models.py:66
+msgid "Модулів"
+msgstr "Models"
+
+#: main/models.py:68
+msgid "Група"
+msgstr "Group"
+
+#: main/models.py:70
+msgid "Формат"
+msgstr "Format"
+
+#: main/models.py:72
+msgid "Ціна загальна"
+msgstr "Total Price"
+
+#: main/models.py:75
+msgid "Ціна за місяць"
+msgstr "Price per Month"
+
+#: main/models.py:78
+msgid "Заклик"
+msgstr "Call to Action"
+
+#: main/models.py:81
+msgid "Наявність"
+msgstr "Availability"
+
+#: main/models.py:100 main/models.py:218 main/models.py:270
+msgid "Час створення"
+msgstr "Create Time"
+
+#: main/models.py:103 main/models.py:221 main/models.py:273
+msgid "Час обновлення"
+msgstr "Update Time"
+
+#: main/models.py:114
+msgid "Курс"
+msgstr "Course"
+
+#: main/models.py:115
+msgid "Курси"
+msgstr "Courses"
+
+#: main/models.py:126
+msgid "Відгук"
+msgstr "Review"
+
+#: main/models.py:127
+msgid "Автор"
+msgstr "Author"
+
+#: main/models.py:146
+msgid "Коментар"
+msgstr ""
+
+#: main/models.py:147
+msgid "Коментарі"
+msgstr "Comments"
+
+#: main/models.py:159
+msgid "Токен"
+msgstr "Token"
+
+#: main/models.py:181
+msgid "Сервіс"
+msgstr "Service"
+
+#: main/models.py:182
+msgid "Сервіси"
+msgstr "Services"
+
+#: main/models.py:195
+msgid "Відео"
+msgstr "Video"
+
+#: main/models.py:199
+msgid "Актуальне"
+msgstr "Current"
+
+#: main/models.py:238
+msgid "Головне медіа"
+msgstr ""
+
+#: main/models.py:239
+msgid "Головні медіа"
+msgstr "Main Media"
+
+#: main/models.py:245
+msgid "Ім'я"
+msgstr "Name"
+
+#: main/models.py:247 main/models.py:292
+msgid "Електрона пошта"
+msgstr "Email"
+
+#: main/models.py:251
+msgid "Мобільний телефон"
+msgstr "Mobile phone"
+
+#: main/models.py:256
+msgid "Примітка"
+msgstr "Note"
+
+#: main/models.py:260
+msgid "Оброблено"
+msgstr "Processed"
+
+#: main/models.py:266
+msgid "Записка"
+msgstr "Note"
+
+#: main/models.py:287
+msgid "Контакт"
+msgstr "Contact"
+
+#: main/models.py:288
+msgid "Контакти"
+msgstr "Contacts"
+
+#: main/apps.py:8
+msgid "Застосунки"
+msgstr "Applications"
+
+#: main/views.py:146
+msgid "Форму з сайту заповнив клієнт"
+msgstr "The form was filled out by the client on the website."
+
+#: main/views.py:190
+msgid "Ласкаво просимо до Bright Language School інформаційну підписку!"
+msgstr "Welcome to the Bright Language School newsletter!"

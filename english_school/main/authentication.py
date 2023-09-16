@@ -5,7 +5,7 @@ from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.permissions import BasePermission
 
 from .models import Service
-from english_school_project.settings import env
+from english_school.settings import env
 
 
 logger = logging.getLogger(__name__)

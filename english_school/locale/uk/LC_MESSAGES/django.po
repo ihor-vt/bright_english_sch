@@ -1,0 +1,257 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-16 14:40+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+#: english_school/settings.py:177
+msgid "Ukrainian"
+msgstr ""
+
+#: english_school/settings.py:178
+msgid "Англійська"
+msgstr ""
+
+#: english_school/urls.py:29
+msgid "admin/"
+msgstr ""
+
+#: english_school/urls.py:37 english_school/urls.py:38
+msgid "Адмін-панель"
+msgstr ""
+
+#: english_school/urls.py:39
+msgid "Ласкаво просимо до адмін-панелі сайту"
+msgstr ""
+
+#: main/apps.py:8
+msgid "Застосунки"
+msgstr ""
+
+#: main/mail_messsage_generator.py:6
+#, python-brace-format
+msgid ""
+"\n"
+"    Дата і час: {formatted_datetime},\n"
+"    Ім'я: {name}\n"
+"    Пошта: {email}\n"
+"    Телефон: {mobile_phone}\n"
+"    Примітка: {description}\n"
+"    "
+msgstr ""
+
+#: main/mail_messsage_generator.py:17
+#, python-brace-format
+msgid ""
+"\n"
+"    Вітаємо {customer_email},\n"
+"\n"
+"    Дякуємо, що приєдналися до інформаційної розсилки Bright Language "
+"School! Ми раді вітати вас в нашій спільноті і ділитися з вами останніми "
+"новинами, оновленнями та особливими пропозиціями.\n"
+"\n"
+"    Що ви можете очікувати від нас:\n"
+"    - Щомісячний лист з цікавими статтями та корисними порадами з вивчення "
+"мов.\n"
+"    - Оголошення про наші акції, знижки та спеціальні пропозиції.\n"
+"    - Важливі повідомлення та оновлення від Bright Language School.\n"
+"\n"
+"    Ми завжди працюємо над тим, щоб надавати вам якісний контент та послуги. "
+"Ваша підтримка дуже важлива для нас.\n"
+"\n"
+"    Якщо у вас є які-небудь питання або пропозиції, будь ласка, не соромтеся "
+"зв'язатися з нами. Ми завжди готові слухати вас!\n"
+"\n"
+"    Дякуємо ще раз за вашу підписку. Ми сподіваємося, що наші матеріали "
+"будуть корисні та надихнуть вас.\n"
+"\n"
+"    З найкращими побажаннями,\n"
+"    Команда Bright Language School\n"
+"    "
+msgstr ""
+
+#: main/models.py:13 main/models.py:58 main/models.py:157
+msgid "Назва"
+msgstr ""
+
+#: main/models.py:27 main/models.py:88 main/models.py:134 main/models.py:166
+#: main/models.py:206
+msgid "Створив(ла)"
+msgstr ""
+
+#: main/models.py:35 main/models.py:96 main/models.py:142 main/models.py:174
+#: main/models.py:214 main/models.py:280
+msgid "Обновив(ла)"
+msgstr ""
+
+#: main/models.py:39 main/models.py:56
+msgid "Категорія"
+msgstr ""
+
+#: main/models.py:40
+msgid "Категорії"
+msgstr ""
+
+#: main/models.py:63 main/models.py:190
+msgid "Зображення"
+msgstr ""
+
+#: main/models.py:64
+msgid "Період"
+msgstr ""
+
+#: main/models.py:66
+msgid "Модулів"
+msgstr ""
+
+#: main/models.py:68
+msgid "Група"
+msgstr ""
+
+#: main/models.py:70
+msgid "Формат"
+msgstr ""
+
+#: main/models.py:72
+msgid "Ціна загальна"
+msgstr ""
+
+#: main/models.py:75
+msgid "Ціна за місяць"
+msgstr ""
+
+#: main/models.py:78
+msgid "Заклик"
+msgstr ""
+
+#: main/models.py:81
+msgid "Наявність"
+msgstr ""
+
+#: main/models.py:100 main/models.py:218 main/models.py:270
+msgid "Час створення"
+msgstr ""
+
+#: main/models.py:103 main/models.py:221 main/models.py:273
+msgid "Час обновлення"
+msgstr ""
+
+#: main/models.py:114
+msgid "Курс"
+msgstr ""
+
+#: main/models.py:115
+msgid "Курси"
+msgstr ""
+
+#: main/models.py:126
+msgid "Відгук"
+msgstr ""
+
+#: main/models.py:127
+msgid "Автор"
+msgstr ""
+
+#: main/models.py:146
+msgid "Коментар"
+msgstr ""
+
+#: main/models.py:147
+msgid "Коментарі"
+msgstr ""
+
+#: main/models.py:159
+msgid "Токен"
+msgstr ""
+
+#: main/models.py:181
+msgid "Сервіс"
+msgstr ""
+
+#: main/models.py:182
+msgid "Сервіси"
+msgstr ""
+
+#: main/models.py:195
+msgid "Відео"
+msgstr ""
+
+#: main/models.py:199
+msgid "Актуальне"
+msgstr ""
+
+#: main/models.py:238
+msgid "Головне медіа"
+msgstr ""
+
+#: main/models.py:239
+msgid "Головні медіа"
+msgstr ""
+
+#: main/models.py:245
+msgid "Ім'я"
+msgstr ""
+
+#: main/models.py:247 main/models.py:292
+msgid "Електрона пошта"
+msgstr ""
+
+#: main/models.py:251
+msgid "Мобільний телефон"
+msgstr ""
+
+#: main/models.py:256
+msgid "Примітка"
+msgstr ""
+
+#: main/models.py:260
+msgid "Оброблено"
+msgstr ""
+
+#: main/models.py:266
+msgid "Записка"
+msgstr ""
+
+#: main/models.py:287
+msgid "Контакт"
+msgstr ""
+
+#: main/models.py:288
+msgid "Контакти"
+msgstr ""
+
+#: main/views.py:146
+msgid "Форму з сайту заповнив клієнт"
+msgstr ""
+
+#: main/views.py:190
+msgid "Ласкаво просимо до Bright Language School інформаційну підписку!"
+msgstr ""
+
+#: templates/admin/base_site.html:24
+msgid "Documentation"
+msgstr "Документація"
+
+#: templates/admin/base_site.html:28
+msgid "Change password"
+msgstr "Змінити пароль"
+
+#: templates/admin/base_site.html:30
+msgid "Log out"
+msgstr "Вийти"

@@ -6,7 +6,6 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r"categories", views.CategoryViewSet)
-router.register(r"courses/main", views.CourseMainPageViewSet)
 router.register(r"courses", views.CourseViewSet)
 router.register(r"comments", views.CommentViewSet)
 router.register(r"medias", views.MainPageViewSet)

@@ -205,7 +205,7 @@ body {
 }
 
 
-/* @group Language Switcher */
+/* @group Переключити мову */
 
 .sidebar .menu-list.menu-list-bottom {
     margin-bottom: 0;
@@ -223,7 +223,7 @@ body {
   color: #d19b3d;
 }
 
-/* @end Language Switcher */
+/* @end Переключити мову */
 
 
 /* @group Docs Content */

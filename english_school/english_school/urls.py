@@ -1,5 +1,5 @@
 """
-URL configuration for english_school_project project.
+URL configuration for english_school project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -18,17 +18,22 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
+from django.views.i18n import set_language
+from django.conf.urls.i18n import i18n_patterns
+from django.utils.translation import gettext_lazy as _
 
-urlpatterns = [
+urlpatterns = i18n_patterns(
     path("jet/", include("jet.urls", "jet")),
     path("jet/dashboard/", include("jet.dashboard.urls", "jet-dashboard")),
-    path("admin/", admin.site.urls),
+    path("set-language/", set_language, name="set_language"),
+    path(_("admin/"), admin.site.urls),
     path("", include("main.urls")),
-]
+)
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-admin.site.site_header = "Адмін-панель"
-admin.site.site_title = "Адмін-панель"
-admin.site.index_title = "Ласкаво просимо до адмін-панелі сайту"
+admin.site.site_header = _("Адмін-панель")
+admin.site.site_title = _("Адмін-панель")
+admin.site.index_title = _("Ласкаво просимо до адмін-панелі сайту")

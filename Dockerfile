@@ -11,4 +11,4 @@ COPY . $APP_HOME/
 
 EXPOSE 8000
 
-CMD ["python", "english_school_project/manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "english_school/manage.py", "runserver", "0.0.0.0:8000"]

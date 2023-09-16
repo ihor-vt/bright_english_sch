@@ -54,7 +54,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class CourseAdmin(admin.ModelAdmin):
     list_display = [
         "name",
-        "image",
+        "display_image",
         "category",
         "time",
         "model",
@@ -75,7 +75,7 @@ class CourseAdmin(admin.ModelAdmin):
 
     list_display_links = [
         "name",
-        "image",
+        "display_image",
         "category",
         "time",
         "model",
