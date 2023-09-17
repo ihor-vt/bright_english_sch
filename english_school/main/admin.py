@@ -1,11 +1,14 @@
 import csv
+import logging
 import datetime
 
 from django.contrib import admin
+from django.conf import settings
 from django.http import HttpResponse
 from django.utils.html import mark_safe
 from django.utils.crypto import get_random_string
 from django.utils.translation import gettext_lazy as _
+from django.core.mail import send_mail, BadHeaderError
 
 from parler.admin import TranslatableAdmin
 
@@ -19,6 +22,9 @@ from .models import (
     Subscrabe_email
     )
 from writingApp.models import TextEditor
+
+
+logger = logging.getLogger(__name__)
 
 
 def export_to_csv(modeladmin, request, queryset):
@@ -287,9 +293,18 @@ class Subscrabe_emailAdmin(admin.ModelAdmin):
     def send_custom_message(self, request, queryset):
         selected_messages = TextEditor.objects.filter(is_selected=True)
         recipient_list = [subscriber.email for subscriber in queryset]
-        send_email(
-            selected_messages.title, selected_messages.content, recipient_list
-            )
+        from_email = settings.DEFAULT_FROM_EMAIL
+        try:
+            send_mail(
+                selected_messages.title,
+                selected_messages.content,
+                from_email,
+                recipient_list
+                )
+        except BadHeaderError as e:
+            logger.error(f"Invalid header found: {e}")
+        except Exception as e:
+            logger.error(f">>> Failed to send email: {e}")
 
         self.message_user(request, _("Повідомлення надіслано успішно."))
 
