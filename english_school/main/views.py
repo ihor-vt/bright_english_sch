@@ -202,7 +202,6 @@ class Subscrabe_emailViewSet(viewsets.ModelViewSet):
                 logger.error(f"Invalid header found: {e}")
             except Exception as e:
                 logger.error(f">>> Failed to send email: {e}")
-            sumscribe_welcome_message()
 
             return Response(
                 {'detail': 'You successfully subscribe for newsletters.'},
