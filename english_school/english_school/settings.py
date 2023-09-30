@@ -15,6 +15,7 @@ import cloudinary
 
 from pathlib import Path
 
+from django.utils.log import AdminEmailHandler
 from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -33,10 +34,12 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "bright-language-school.fly.dev"]
+ALLOWED_HOST_SECRET = os.environ.get("ALLOWED_HOST_SECRET")
+
+ALLOWED_HOSTS = [ALLOWED_HOST_SECRET, "0.0.0.0", '127.0.0.1']
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://bright-language-school.fly.dev",
+    f"https://{ALLOWED_HOST_SECRET}",
     ]
 
 
@@ -119,10 +122,12 @@ WSGI_APPLICATION = "english_school.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+DATABASES_NAME = os.environ.get("DATABASES_NAME")
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": BASE_DIR / DATABASES_NAME,
     }
 }
 
@@ -144,7 +149,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGIN_REDIRECT_URL = CSRF_TRUSTED_ORIGINS[0] + '/en/admin/'
+LOGIN_URL = '/admin/login/'
+LOGIN_REDIRECT_URL = '/en/admin/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -212,6 +218,7 @@ DEVELOPER_NAME = os.environ.get("DEVELOPER_NAME")
 ADMINS = [
     (DEVELOPER_NAME, DEVELOPER_EMAIL), ("Bright Language School", ADMIN_EMAIL)
     ]
+MANAGERS = ADMINS
 
 
 # Cloudinary
@@ -242,30 +249,28 @@ JET_THEMES = [
 
 JET_SIDE_MENU_COMPACT = True
 
+# Google analytics
+
+JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = os.environ.get(
+    "GOOGLE_ANALYTIC_SECRET")
 
 # Logging
+SEND_BROKEN_LINK_EMAILS = True
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "handlers": {
-        "console": {
-            "class": "logging.StreamHandler",
+        "mail_admins": {
+            "level": "ERROR",
+            "class": "django.utils.log.AdminEmailHandler",
         },
-        "file": {
-            "level": "DEBUG",
-            "class": "logging.FileHandler",
-            "filename": "app.log",
-        },
-    },
-    "root": {
-        "handlers": ["console", "file"],
-        "level": "WARNING",
     },
     "loggers": {
         "django": {
-            "handlers": ["console", "file"],
-            "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
-            "propagate": False,
+            "handlers": ["mail_admins"],
+            "level": "ERROR",
+            "propagate": True,
         },
     },
 }

@@ -6,7 +6,11 @@ from .models import (
     Comment,
     MainPage,
     Contact,
-    Subscrabe_email
+    SubscriptionEmail,
+    Teacher,
+    TeacherCertificate,
+    TeacherEducation,
+    TeacherNote
 )
 
 
@@ -21,7 +25,7 @@ class CourseSerializer(serializers.ModelSerializer):
         model = Course
         fields = [
             "id", "category", "name", "slug", "image", "model", "group",
-            "format", "price_total", "price_mounth", "message"
+            "format", "price_total", "price_mounth", "message", "description"
             ]
 
 
@@ -52,7 +56,38 @@ class ContactSerializer(serializers.ModelSerializer):
             "description"]
 
 
-class Subscrabe_emailSerializer(serializers.ModelSerializer):
+class SubscriptionEmailSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Subscrabe_email
+        model = SubscriptionEmail
         fields = ["email"]
+
+
+class TeacherEducationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TeacherEducation
+        fields = ["education"]
+
+
+class TeacherNoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TeacherNote
+        fields = ["notes"]
+
+
+class TeacherCertificateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TeacherCertificate
+        fields = ["image"]
+
+
+class TeacherSerializer(serializers.ModelSerializer):
+    educations = TeacherEducationSerializer(many=True, read_only=True)
+    notes = TeacherNoteSerializer(many=True, read_only=True)
+    certificates = TeacherCertificateSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Teacher
+        fields = [
+            "name", "position", "slug", "image",
+            "educations", "notes", "certificates"
+            ]

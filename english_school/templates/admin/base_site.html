@@ -11,6 +11,24 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/custom_admin.css' %}" />
 {% endblock %}
 
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+        <img style="background-color: white" src="{% static 'images/company_logo.jpeg' %}" alt="Bright Language School" height="50%" width="50%">
+        <br><br>
+        <span> {% trans "Bright Language School" %}</span>
+        </a>
+    </h1>
+{% endblock %}
+
+{% block nav-global %}
+<a href="{% url 'create_backup' %}" class="sidebar-link icon">
+    <span class="sidebar-link-icon">
+        <img src="{% static 'images/download-icons.svg' %}" alt="Backup Icon" style="height: fit-content;width: 8%;">
+    </span>
+    {% trans 'Database backup' %}
+</a>
+{% endblock %}
 
 {% block userlinks %}
 <ul>

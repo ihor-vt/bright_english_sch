@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-17 00:04+0300\n"
+"POT-Creation-Date: 2023-09-30 19:06+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,49 +18,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: english_school/settings.py:157
+#: english_school/settings.py:163
 msgid "Ukrainian"
 msgstr "Українська"
 
-#: english_school/settings.py:158
+#: english_school/settings.py:164
 msgid "Англійська"
 msgstr "English"
 
-#: english_school/urls.py:29
-msgid "admin/"
-msgstr "admin/"
-
-#: english_school/urls.py:38 english_school/urls.py:39
+#: english_school/urls.py:39 english_school/urls.py:40
 msgid "Адмін-панель"
 msgstr "Admin panel"
 
-#: english_school/urls.py:40
+#: english_school/urls.py:41
 #, fuzzy
 #| msgid "Ласкаво просимо до Bright Language School інформаційну підписку!"
 msgid "Ласкаво просимо до адмін-панелі сайту"
 msgstr "Welcome to the Bright Language School newsletter!"
 
-#: main/admin.py:49
+#: main/admin.py:73
 msgid "Експорт у CSV"
 msgstr "Export to CSV"
 
-#: main/admin.py:76
+#: main/admin.py:100
 msgid "Генерація нового токену"
 msgstr "Generation of a new token"
 
-#: main/admin.py:222
+#: main/admin.py:246
 msgid "Медіа"
 msgstr "Media"
 
-#: main/admin.py:277
+#: main/admin.py:301
 msgid "Позначити, як оброблені"
 msgstr "Mark as processed"
 
-#: main/admin.py:294
+#: main/admin.py:327
 msgid "Повідомлення надіслано успішно."
 msgstr "Message sent successfully."
 
-#: main/admin.py:297
+#: main/admin.py:330
 msgid "Надіслати вибраним електронну пошту"
 msgstr "Send email to selected"
 
@@ -142,185 +138,265 @@ msgstr ""
 "    The Bright Language School Team\n"
 " "
 
-#: main/models.py:15 main/models.py:60 main/models.py:192
+#: main/models.py:16
+msgid "Онлайн"
+msgstr "Online"
+
+#: main/models.py:17
+msgid "Офлайн"
+msgstr "Offline"
+
+#: main/models.py:18
+msgid "Обидва"
+msgstr "Both"
+
+#: main/models.py:26 main/models.py:74 main/models.py:222
 msgid "Назва"
 msgstr "Title"
 
-#: main/models.py:30 main/models.py:113 main/models.py:167 main/models.py:205
-#: main/models.py:247
+#: main/models.py:41 main/models.py:141 main/models.py:197 main/models.py:235
+#: main/models.py:277 main/models.py:408
 msgid "Створив(ла)"
 msgstr "Created by"
 
-#: main/models.py:38 main/models.py:121 main/models.py:175 main/models.py:213
-#: main/models.py:255 main/models.py:327
+#: main/models.py:49 main/models.py:149 main/models.py:205 main/models.py:243
+#: main/models.py:285 main/models.py:357 main/models.py:416
 msgid "Обновив(ла)"
 msgstr "Updated by"
 
-#: main/models.py:42 main/models.py:55
+#: main/models.py:53 main/models.py:69
 msgid "Категорія"
 msgstr "Category"
 
-#: main/models.py:43
+#: main/models.py:54
 msgid "Категорії"
 msgstr "Categories"
 
-#: main/models.py:64
+#: main/models.py:78
 msgid "Період"
 msgstr "Period"
 
-#: main/models.py:68
+#: main/models.py:82
 msgid "Модулів"
 msgstr "Models"
 
-#: main/models.py:72
+#: main/models.py:86
 msgid "Група"
 msgstr "Group"
 
-#: main/models.py:76
+#: main/models.py:92
 msgid "Формат"
 msgstr "Format"
 
-#: main/models.py:88 main/models.py:229
-msgid "Зображення"
-msgstr "Image"
-
-#: main/models.py:92
-msgid "Ціна загальна"
-msgstr "Total Price"
-
-#: main/models.py:97
-msgid "Ціна за місяць"
-msgstr "Price per Month"
-
-#: main/models.py:101
+#: main/models.py:98
 msgid "Заклик"
 msgstr "Call to Action"
 
-#: main/models.py:105
+#: main/models.py:104
+msgid "Опис"
+msgstr "Description"
+
+#: main/models.py:116 main/models.py:259 main/models.py:401
+msgid "Зображення"
+msgstr "Image"
+
+#: main/models.py:120
+msgid "Ціна загальна"
+msgstr "Total Price"
+
+#: main/models.py:125
+msgid "Ціна за місяць"
+msgstr "Price per Month"
+
+#: main/models.py:129
 msgid "Наявність"
 msgstr "Availability"
 
-#: main/models.py:125 main/models.py:259 main/models.py:315
+#: main/models.py:133
+msgid "Показувати на головній сторінці"
+msgstr "Show on main page"
+
+#: main/models.py:153 main/models.py:289 main/models.py:345 main/models.py:420
 msgid "Час створення"
 msgstr "Create Time"
 
-#: main/models.py:129 main/models.py:263 main/models.py:319
+#: main/models.py:157 main/models.py:293 main/models.py:349 main/models.py:424
 msgid "Час обновлення"
 msgstr "Update Time"
 
-#: main/models.py:141
+#: main/models.py:169
 msgid "Курс"
 msgstr "Course"
 
-#: main/models.py:142
+#: main/models.py:170
 msgid "Курси"
 msgstr "Courses"
 
-#: main/models.py:155
+#: main/models.py:185
 msgid "Відгук"
 msgstr "Review"
 
-#: main/models.py:159
+#: main/models.py:189
 msgid "Автор"
 msgstr "Author"
 
-#: main/models.py:179
+#: main/models.py:209
 msgid "Коментар"
 msgstr "Comment"
 
-#: main/models.py:180
+#: main/models.py:210
 msgid "Коментарі"
 msgstr "Comments"
 
-#: main/models.py:197
+#: main/models.py:227
 msgid "Токен"
 msgstr "Token"
 
-#: main/models.py:220
+#: main/models.py:250
 msgid "Сервіс"
 msgstr "Service"
 
-#: main/models.py:221
+#: main/models.py:251
 msgid "Сервіси"
 msgstr "Services"
 
-#: main/models.py:235
+#: main/models.py:265
 msgid "Відео"
 msgstr "Video"
 
-#: main/models.py:239
+#: main/models.py:269
 msgid "Актуальне"
 msgstr "Current"
 
-#: main/models.py:281
+#: main/models.py:311
 msgid "Головне медіа"
 msgstr "Main Media"
 
-#: main/models.py:282
+#: main/models.py:312
 msgid "Головні медіа"
 msgstr "Main Media"
 
-#: main/models.py:288
+#: main/models.py:318
 msgid "Ім'я"
 msgstr "Name"
 
-#: main/models.py:291 main/models.py:340
+#: main/models.py:321 main/models.py:370
 msgid "Електрона пошта"
 msgstr "Email"
 
-#: main/models.py:295
+#: main/models.py:325
 msgid "Мобільний телефон"
 msgstr "Mobile phone"
 
-#: main/models.py:301
+#: main/models.py:331
 msgid "Примітка"
 msgstr "Note"
 
-#: main/models.py:305
+#: main/models.py:335
 msgid "Оброблено"
 msgstr "Processed"
 
-#: main/models.py:311
+#: main/models.py:341
 msgid "Записка"
 msgstr "Note"
 
-#: main/models.py:334
+#: main/models.py:364
 msgid "Контакт"
 msgstr "Contact"
 
-#: main/models.py:335
+#: main/models.py:365
 msgid "Контакти"
 msgstr "Contacts"
 
-#: main/models.py:344
+#: main/models.py:374
 msgid "Підписка на розсилку"
 msgstr "Newsletter subscription"
 
-#: main/models.py:345
+#: main/models.py:375
 msgid "Підписки на розсилку"
 msgstr "Newsletter subscriptions"
 
-#: main/views.py:146
+#: main/models.py:385
+msgid "Імʼя"
+msgstr "Name"
+
+#: main/models.py:389
+msgid "Посада"
+msgstr "Position"
+
+#: main/models.py:436
+msgid "Вчитель"
+msgstr "Teacher"
+
+#: main/models.py:437
+msgid "Вчителі"
+msgstr "Teachers"
+
+#: main/models.py:455 main/models.py:460 main/models.py:471 main/models.py:472
+msgid "Освіта"
+msgstr "Education"
+
+#: main/models.py:480 main/models.py:485 main/models.py:496
+msgid "Нотатка"
+msgstr "Note"
+
+#: main/models.py:497
+msgid "Нотатки"
+msgstr "Notes"
+
+#: main/models.py:505 main/models.py:528
+msgid "Сертифікати"
+msgstr "Certificates"
+
+#: main/models.py:509
+#, fuzzy
+#| msgid "Зображення"
+msgid "Зображення сертифіката"
+msgstr "Image"
+
+#: main/models.py:527
+msgid "Сертифікат"
+msgstr "Certificate"
+
+#: main/views.py:207
 msgid "Форму з сайту заповнив клієнт"
 msgstr "The form was filled out by the client on the website."
 
-#: main/views.py:190
+#: main/views.py:248
+msgid "Ця електронна адреса вже підписана."
+msgstr "This email address is already subscribed."
+
+#: main/views.py:255
 msgid "Ласкаво просимо до Bright Language School інформаційну підписку!"
 msgstr "Welcome to the Bright Language School newsletter!"
 
-#: templates/admin/base_site.html:31
+#: templates/admin/base_site.html:19
+msgid "Bright Language School"
+msgstr ""
+
+#: templates/admin/base_site.html:29
+msgid "Database backup"
+msgstr ""
+
+#: templates/admin/base_site.html:32
+#, fuzzy
+#| msgid "Створив(ла)"
+msgid "Створити бекап"
+msgstr "Create a backup"
+
+#: templates/admin/base_site.html:53
 msgid "Документація"
 msgstr "Documentation"
 
-#: templates/admin/base_site.html:35
+#: templates/admin/base_site.html:57
 msgid "Переглянути сайт"
 msgstr "View site"
 
-#: templates/admin/base_site.html:36
+#: templates/admin/base_site.html:58
 msgid "Змінити пароль"
 msgstr "Change password"
 
-#: templates/admin/base_site.html:38
+#: templates/admin/base_site.html:60
 msgid "Вийти"
 msgstr "Log out"
 
@@ -343,6 +419,9 @@ msgstr "Text editor"
 #: writingApp/models.py:21
 msgid "Редактор текстів"
 msgstr "Text editor"
+
+#~ msgid "admin/"
+#~ msgstr "admin/"
 
 #~ msgid "Переключити мову"
 #~ msgstr "Language Switcher"

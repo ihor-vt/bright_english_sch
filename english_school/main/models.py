@@ -5,7 +5,18 @@ from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
 from cloudinary.models import CloudinaryField
-from parler.models import TranslatableModel, TranslatedFields
+from parler.models import (
+    TranslatableModel,
+    TranslatedFields,
+    TranslationDoesNotExist
+)
+
+
+FORMAT_CHOICES = [
+    ('online', _('Онлайн')),
+    ('offline', _('Офлайн')),
+    ('both', _('Обидва'))
+]
 
 
 class Category(TranslatableModel):
@@ -43,7 +54,10 @@ class Category(TranslatableModel):
         verbose_name_plural = _("Категорії")
 
     def __str__(self) -> str:
-        return self.name
+        try:
+            return self.name
+        except TranslationDoesNotExist:
+            return ''
 
 
 class Course(TranslatableModel):
@@ -72,9 +86,23 @@ class Course(TranslatableModel):
             verbose_name=_("Група")
             ),
         format=models.CharField(
-            max_length=200,
+            max_length=10,
+            choices=FORMAT_CHOICES,
+            default='both',
             verbose_name=_("Формат")
-            )
+            ),
+        message=models.CharField(
+            max_length=200,
+            null=True,
+            blank=True,
+            verbose_name=_("Заклик")
+            ),
+        description=models.TextField(
+            max_length=1000,
+            null=True,
+            blank=True,
+            verbose_name=_("Опис")
+            ),
     )
     slug = models.SlugField(
         max_length=200,
@@ -96,14 +124,14 @@ class Course(TranslatableModel):
         decimal_places=2,
         verbose_name=_("Ціна за місяць")
     )
-    message = models.CharField(
-        max_length=200,
-        verbose_name=_("Заклик")
-        )
     available = models.BooleanField(
         default=True,
         verbose_name=_("Наявність")
         )
+    main_page = models.BooleanField(
+        default=False,
+        verbose_name=_("Показувати на головній сторінці")
+    )
     created_by = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
@@ -141,12 +169,14 @@ class Course(TranslatableModel):
         verbose_name = _("Курс")
         verbose_name_plural = _("Курси")
         indexes = [
-            models.Index(fields=["id"]),
             models.Index(fields=["-created"]),
         ]
 
     def __str__(self) -> str:
-        return self.name
+        try:
+            return self.name
+        except TranslationDoesNotExist:
+            return ''
 
 
 class Comment(models.Model):
@@ -335,7 +365,7 @@ class Contact(models.Model):
         verbose_name_plural = _("Контакти")
 
 
-class Subscrabe_email(models.Model):
+class SubscriptionEmail(models.Model):
     email = models.EmailField(
         verbose_name=_("Електрона пошта")
         )
@@ -346,3 +376,153 @@ class Subscrabe_email(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Teacher(TranslatableModel):
+    translations = TranslatedFields(
+        name=models.CharField(
+            max_length=200,
+            verbose_name=_("Імʼя")
+            ),
+        position=models.CharField(
+            max_length=500,
+            verbose_name=_("Посада")
+            ),
+    )
+    slug = models.SlugField(
+        max_length=200,
+        unique=True,
+        null=True,
+        blank=True
+        )
+    image = models.ImageField(
+        upload_to="images/",
+        null=True,
+        verbose_name=_("Зображення"))
+    created_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        related_name='teacher_created',
+        null=True,
+        blank=True,
+        verbose_name=_("Створив(ла)"),
+        )
+    updated_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        related_name='teacher_updated',
+        null=True,
+        blank=True,
+        verbose_name=_("Обновив(ла)"),
+        )
+    created = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name=_("Час створення")
+        )
+    updated = models.DateTimeField(
+        auto_now=True,
+        verbose_name=_("Час обновлення")
+        )
+
+    def delete(self, *args, **kwargs):
+        if self.image:
+            # Get the public_id of the image from the Cloudinary URL
+            public_id = self.image.name.split('/')[-1].split('.')[0]
+            cloudinary.uploader.destroy(public_id)
+
+        super().delete(*args, **kwargs)
+
+    class Meta:
+        verbose_name = _("Вчитель")
+        verbose_name_plural = _("Вчителі")
+        indexes = [
+            models.Index(fields=["id"]),
+            models.Index(fields=["-created"]),
+        ]
+
+    def __str__(self) -> str:
+        try:
+            return self.name
+        except TranslationDoesNotExist:
+            return ''
+
+
+class TeacherEducation(TranslatableModel):
+    teacher = models.ForeignKey(
+        Teacher,
+        on_delete=models.CASCADE,
+        related_name='teacher_educations',
+        verbose_name=_("Освіта")
+    )
+    translations = TranslatedFields(
+        education=models.CharField(
+            max_length=200,
+            verbose_name=_("Освіта")
+            )
+    )
+
+    def __str__(self) -> str:
+        try:
+            return self.education
+        except TranslationDoesNotExist:
+            return ''
+
+    class Meta:
+        verbose_name = _("Освіта")
+        verbose_name_plural = _("Освіта")
+
+
+class TeacherNote(TranslatableModel):
+    teacher = models.ForeignKey(
+        Teacher,
+        on_delete=models.CASCADE,
+        related_name='teacher_notes',
+        verbose_name=_("Нотатка")
+    )
+    translations = TranslatedFields(
+        notes=models.CharField(
+            max_length=200,
+            verbose_name=_("Нотатка")
+            )
+    )
+
+    def __str__(self) -> str:
+        try:
+            return self.notes
+        except TranslationDoesNotExist:
+            return ''
+
+    class Meta:
+        verbose_name = _("Нотатка")
+        verbose_name_plural = _("Нотатки")
+
+
+class TeacherCertificate(TranslatableModel):
+    teacher = models.ForeignKey(
+        Teacher,
+        on_delete=models.CASCADE,
+        related_name='teacher_certificates',
+        verbose_name=_("Сертифікати")
+    )
+    image = models.ImageField(
+        upload_to="certificates/",
+        verbose_name=_("Зображення сертифіката")
+    )
+
+    def delete(self, *args, **kwargs):
+        if self.image:
+            # Get the public_id of the image from the Cloudinary URL
+            public_id = self.image.name.split('/')[-1].split('.')[0]
+            cloudinary.uploader.destroy(public_id)
+
+        super().delete(*args, **kwargs)
+
+    def __str__(self) -> str:
+        try:
+            return str(self.id)
+        except TranslationDoesNotExist:
+            return ''
+
+    class Meta:
+        verbose_name = _("Сертифікат")
+        verbose_name_plural = _("Сертифікати")

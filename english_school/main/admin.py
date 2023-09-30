@@ -10,7 +10,9 @@ from django.utils.crypto import get_random_string
 from django.utils.translation import gettext_lazy as _
 from django.core.mail import send_mail, BadHeaderError
 
-from parler.admin import TranslatableAdmin
+from parler.admin import TranslatableAdmin, TranslatableStackedInline
+from jet.dashboard.dashboard import Dashboard, AppIndexDashboard
+from jet.dashboard.dashboard_modules import google_analytics
 
 from .models import (
     Category,
@@ -19,12 +21,28 @@ from .models import (
     Comment,
     MainPage,
     Contact,
-    Subscrabe_email
+    SubscriptionEmail,
+    TeacherCertificate,
+    TeacherNote,
+    TeacherEducation,
+    Teacher
     )
 from writingApp.models import TextEditor
 
 
 logger = logging.getLogger(__name__)
+
+
+class CustomIndexDashboard(Dashboard):
+    columns = 3
+
+    def init_with_context(self, context):
+        self.available_children.append(
+            google_analytics.GoogleAnalyticsVisitorsTotals)
+        self.available_children.append(
+            google_analytics.GoogleAnalyticsVisitorsChart)
+        self.available_children.append(
+            google_analytics.GoogleAnalyticsPeriodVisitors)
 
 
 def export_to_csv(modeladmin, request, queryset):
@@ -145,7 +163,7 @@ class CourseAdmin(TranslatableAdmin):
         return {"slug": ("name",)}
 
     list_filter = [
-        "category", "available", "price_total", "message"
+        "category", "available", "price_total"
         ]
 
     search_fields = [
@@ -283,8 +301,8 @@ class ContactAdmin(admin.ModelAdmin):
     mark_as_processed.short_description = _("Позначити, як оброблені")
 
 
-@admin.register(Subscrabe_email)
-class Subscrabe_emailAdmin(admin.ModelAdmin):
+@admin.register(SubscriptionEmail)
+class SubscriptionEmailAdmin(admin.ModelAdmin):
     list_display = [
         "id",
         "email"
@@ -312,3 +330,64 @@ class Subscrabe_emailAdmin(admin.ModelAdmin):
         "Надіслати вибраним електронну пошту")
 
     actions = [export_to_csv, "send_custom_message"]
+
+
+class TeacherNoteInline(TranslatableStackedInline):
+    model = TeacherNote
+    readonly_fields = ('id',)
+    extra = 1
+
+
+class TeacherCertificateInline(admin.StackedInline):
+    model = TeacherCertificate
+    readonly_fields = ('id',)
+    extra = 1
+
+
+class TeacherEducationInline(TranslatableStackedInline):
+    model = TeacherEducation
+    readonly_fields = ('id',)
+    extra = 1
+
+
+@admin.register(Teacher)
+class TeacherAdmin(TranslatableAdmin):
+    list_display = [
+        'name',
+        'display_image',
+        'position',
+        "created",
+        "updated",
+        "updated_by"
+        ]
+    readonly_fields = [
+        "created_by",
+        "created",
+        "updated",
+        "updated_by"
+        ]
+    inlines = [
+        TeacherNoteInline,
+        TeacherCertificateInline,
+        TeacherEducationInline
+        ]
+
+    def display_image(self, obj):
+        image = obj.image.url
+        if image:
+            return mark_safe(
+                f'<img src="{image}" width="80" height="100"\
+                    style="margin-right: 10px;" />'
+            )
+        return "-"
+
+    def get_prepopulated_fields(self, request, obj=None):
+        return {"slug": ("name",)}
+
+    def save_model(self, request, obj, form, change):
+        if not obj.id:
+            obj.created_by = request.user
+        else:
+            obj.updated_by = request.user
+
+        super().save_model(request, obj, form, change)

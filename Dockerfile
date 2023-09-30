@@ -4,11 +4,12 @@ ENV APP_HOME /app
 
 WORKDIR $APP_HOME
 
-COPY requirements.txt $APP_HOME/
-RUN pip install --no-cache-dir -r requirements.txt
-
 COPY . $APP_HOME/
 
-EXPOSE 8000
+RUN apt-get update && apt-get install -y sqlite3 && chmod +x /usr/bin/sqlite3
 
-CMD ["python", "english_school/manage.py", "runserver", "0.0.0.0:8000"]
+RUN pip install --no-cache-dir -r requirements.txt
+
+WORKDIR $APP_HOME/english_school
+
+CMD ["gunicorn", "english_school.wsgi:application", "--bind", "0.0.0.0:8000"]

@@ -21,13 +21,14 @@ from django.conf.urls.static import static
 from django.views.i18n import set_language
 from django.conf.urls.i18n import i18n_patterns
 from django.utils.translation import gettext_lazy as _
+from jet.dashboard.dashboard_modules import google_analytics_views
 
 urlpatterns = i18n_patterns(
     path("jet/", include("jet.urls", "jet")),
     path("jet/dashboard/", include("jet.dashboard.urls", "jet-dashboard")),
     path("set-language/", set_language, name="set_language"),
-    path(_("admin/"), admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
+    path("admin/", admin.site.urls),
     path("", include("main.urls")),
 )
 

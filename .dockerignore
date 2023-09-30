@@ -2,3 +2,4 @@ fly.toml
 .git/
 **/.env
 **.djcache
+**__pycache__
